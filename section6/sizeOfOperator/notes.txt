@@ -1,0 +1,22 @@
+sizeof determines thee size in bytes of a type or variable
+
+e.g.
+  sizeof(int)
+  sizeof(double)
+
+  sizeof(some_variable)
+  sizeof some_variable
+
+sizeof operator gets its information from 2 C++ include file:
+  
+  <climits> //this one is for integer types
+  <cfloar>  //this one is for floating types
+
+Some of the things that these include files have are:
+
+  INT_MAX
+  INT_MIN
+  LONG_MAX
+  LONG_MIN
+  FLT_MAX
+  FLT_MIN

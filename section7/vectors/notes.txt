@@ -1,0 +1,37 @@
+A vector can grow its size unlike arrays that cannot
+Vectors are object
+Can provide bound checking
+Can use functions/methods like sort, reverse, find, and more
+When declaring the vector size, it automatically initialize its values to 0
+
+Declaring a vector:
+  #include <vector>
+
+  vector<value_type> name_of_vector;
+  e.g.
+    vector<int> test_scores;
+
+Accesing is the same as arrays, we use square brackets[]
+Another way of accesing vector elements is with the '.at' method:
+  vector_name.at(element_index)
+  e.g.
+    cout << "First score at index 0: " << test_scores.at(0) << endl;
+
+Making vectors grow when needed with the method '.push_back':
+  vector_name.push_back(element)
+  e.g.
+    vector <int> test_scores {100, 95, 99};
+
+    test_scores.push_back(80);
+    The vector now has these values: {100, 95, 99, 80} //pushes to the end of the vector
+
+Bound checking:
+Many vector methods provide bounds checking, and an exception and error message is generated
+  e.g.
+    vector<int> test_scores{100, 95};
+    cin >> test_score.at(5); //the method .at byt default includes bound checking
+
+Exception thrown:
+  terminate called after throwing an instance of 'std::out_of_range'
+  what(): vector::_M_range_check: _n (which is 5) >= this->size() (which is 2)
+  This application has requested the Runtime to terminate it in an unusual way
