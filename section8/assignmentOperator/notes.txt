@@ -1,0 +1,20 @@
+Common operators in C++ can be grouped as follows:
+  assignment
+  arithmetic
+  increment/decrement
+  relational
+  logical
+  member access
+  other
+
+--------------------------------------------------
+Assignment operator (=). When you change a value that already exists in a variable
+  
+  lhs = rhs
+
+rhs is an expression that is evaluated to a value
+The value of rhs is stored to lhs
+The value of rhs must be type compatible with lhs
+The lhs must be assignable
+Assignment expression it evaluates to what was just assigned
+More than one variable can be assigned in a single statement

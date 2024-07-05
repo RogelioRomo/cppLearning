@@ -1,0 +1,25 @@
+  not | !  | negation
+  and | && | logical and
+  or  | || | logical or
+
+  Precedence:
+    ! has higher precedence than &&
+    && has higher precedence than ||
+
+    ! is a unary operator
+    && and || are binary operators
+
+  Examples:
+    num1 >= 10 && num1 < 20
+    num1 <= 10 || num1 >= 10
+
+    !is_raining && temperatures > 32.0
+    is_raining || is_snowing
+
+    temeratures > 100 && is_humid || is_raining
+
+  Short-circuit evaluation:
+    When evaluating a logical expression C++ stops as soon as the result is known
+    Suppose:
+      expr1 && expr2 && expr3 //if expr1 is false than the entire expression is false by default, and C++ will not compute the remaining bacause it knows this
+      expr1 || expr2 || expr3 //is any of the expr is true, then the entire expression is true, so no point computing the rest of the sentence

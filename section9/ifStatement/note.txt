@@ -1,0 +1,19 @@
+With sequence, selection and iteration we can resolve and create any algorithm
+
+Sequence: ordering statements sequentially
+
+Selection: making decisions
+  if statement
+  if-else statements
+  Nested if statements
+  swittch statements
+  Conditional operator ?:
+
+Iteration: looping or repeating
+  for loop
+  ranged-based for loop
+  while loop
+  do-while loop
+  continue and break
+  infinite loops
+  nested loops

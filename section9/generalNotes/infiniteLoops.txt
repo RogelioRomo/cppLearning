@@ -1,0 +1,26 @@
+-Loops whose condition expression always evaluate to true
+-Usually this is unintended and a programmer error
+-Sometimes programmers use infinite loops and include break statements in the body to control them
+-Sometimes infinite loops are exactly what we need
+  -Event loop in an event-driven program
+  -Operating systems
+
+e.g.
+  for(;;)
+    cout << "This will print forever" << endl;
+
+  while(true)
+    cout << "This will print forever" << endl;
+
+  do {
+    cout << "This will print forever" << endl;
+  } while (true);
+
+  while(true) {
+    char again {};
+    cout << "Do you want to loop again? (Y/N): ";
+    cin >> again;
+
+    if(again == 'N' || again == 'n')
+      break;
+  }

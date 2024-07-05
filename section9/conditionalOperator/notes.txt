@@ -1,0 +1,10 @@
+Conditional operator/ternary operator:
+
+?:
+  (cond_expr) ? expr1 : expr2
+   cond_expr evaluates to a booleand expression:
+    if cond_expr is true then value of expr1 is returned
+    if cond_expr is false then value of expr2 is returned
+
+Very useful when use inline
+Very easy to abuse!!!

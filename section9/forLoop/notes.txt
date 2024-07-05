@@ -1,0 +1,24 @@
+Some typiacl use-cases for looping:
+
+Execute a loop:
+  -a specific number of times 
+  -for each element in a collection
+  -while a specific condition remains true
+  -until a specific condition becomes false
+  -until we reach the end of some input stream
+  -forever
+
+for loop:
+  -iterates a specific number of times 
+
+Range-based for loop:
+  -one iteration for each element in a range or collection
+
+syntax:
+  for(initialization; condition; increment/decrement)
+    statement
+
+comma operator:
+  for(int i{1}, j{5}; i <=5; ++i, ++j) {
+    cout << i << " * " << j << " : " << (i * j) << endl;
+  }
