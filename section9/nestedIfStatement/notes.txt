@@ -1,0 +1,9 @@
+if(expr1
+  if(expr2)
+    statement1;
+  else
+    statement2;
+
+if statement is nested within another
+Allows testing of multiple conditions
+else belongs to the closest if

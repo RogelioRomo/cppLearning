@@ -1,0 +1,22 @@
+Ranged-base for loop
+
+  Syntax
+    for(var_type var_name: sequence)
+      statement;
+  
+  e.g.
+    int score [] {100, 90, 97};
+    for (int score: scores)
+      cout << score << endl;
+
+    output:
+    100
+    90
+    97
+
+You dont have to use explicitly the var_type, you can tell C++ to deduce/infered
+The type of value it will have using the "auto" keyword:
+  for(auto score: scores)
+    cout << score << endl;
+
+This will infered the type as integer for this case

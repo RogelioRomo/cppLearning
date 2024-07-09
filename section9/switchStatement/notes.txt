@@ -1,0 +1,44 @@
+The control expression must evaluate to an integer type
+The case expression must be constants expressions that evaluate to integer or integer literals
+Once a match occurs all following case sections are executed UNTIL a break is reached
+Best practice - provide break statement for each case; default should be handled although is optional
+
+example:
+  switch(selection) {
+    case '1': cout << "1 selected";
+              break;
+    case '2': cout << "2 selected";
+              break;
+    case '3':
+    case '4': cout << "3 or 4 selected";
+              break;
+    default: cout << "1,2,3,4 NOT selected";
+  }
+
+fall-through example: (not best practice, because it executes all the statements until it hit a break;)
+  
+  switch(selection) {
+    case '1': cout << "1 selected";
+    case '2': cout << "2 selected";
+    case '3': cout << "3 selected";
+    case '4': cout << "4 selected";
+              break;
+    default: cout << "1,2,3,4 NOT selected";
+  }
+
+example with an enumeration:
+
+enum Color {
+  red, green, blue
+};
+
+Color screen_color {green};
+
+switch (screen_color) {
+  case '1': cout << "red"; break;
+  case '2': cout << "green"; break;
+  case '3': cout << "blue"; break;
+  default: cout << "Should never execute";
+}
+
+

@@ -1,0 +1,10 @@
+Shipping cost calculator
+
+Ask the user for package dimension n inches
+lenght, width, height - these should be integers
+
+All dimensions must be 10 inches or less or we cannot ship it
+
+Base cost $2.50
+If package volume is greater than 100 cubic inches there is a 10% surcharge
+If package volume is greater than 500 cubic inches there is a 25% surcharge

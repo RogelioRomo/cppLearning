@@ -1,0 +1,18 @@
+While loop are really usefull for input validation. We ask the user to repeat the prompt until they get it right
+
+Syntax
+  while(expression)
+    statement;
+Example
+  int i{1};
+  while(i <= 5) {
+    cout << i << endl;
+    ++i; //important!
+  }
+
+output:
+1
+2
+3
+4
+5
