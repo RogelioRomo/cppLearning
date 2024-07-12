@@ -1,0 +1,68 @@
+L-values
+    -values that have names and are addressable
+    -modifiable if they are not constants
+
+    int x{100};  //x is a L-value
+    x = 1000;
+    x = 1000 + 20;
+
+    string name; //name is a L-value
+    name = "Frank";
+
+--------------------------------------------------------------
+NOT L-values
+  100 = x; //100 is NOT a L-value
+  (100 + 20) = x; //(1000 + 20) is NOT a L-value
+
+  string name;
+  name = "Frank";
+  "Frank" = name; //"Frank" is NOT a L-value
+
+--------------------------------------------------------------
+R-values
+  
+  R-values (non addressable and non-assignable)
+    -A value that's not a L-value
+      -a literal
+      -on the right-hand side of an assignment expression
+      -a temporary which is intended to be non-modifiable
+
+  int x = {100}; //100 is a R-value
+  int y = x + 200; //(x+200) is a R-value
+
+  string name;
+  name = "Frank"; //"Frank is a R-value
+
+  int max_num = max(20, 30); //max(20, 30) is a R-value
+
+---------------------------------------------------------------
+R-values can be assigned to L-values explicitly
+
+  int x{100};
+  int y{0};
+
+  y=100; //R-value 100 assigned to L-value y
+  x = x+y; //R-values (x+y) assigned to L-value x
+
+---------------------------------------------------------------
+L-value references
+  -The references we've used are L-values references
+    -because we are referencing L-values
+
+      int x{100};
+
+      int &ref1 = x; //ref1 is reference to L-value
+      ref1 = 1000;
+
+      int &ref2 = 100; //error 100 is an r-value
+
+---------------------------------------------------------------
+The same when we pass_by_reference
+
+  int square(int &n) {
+    return n*n;
+  }
+
+  int num{10};
+  square(num); //OK
+  square(5);   //Error - can't reference r-value 5

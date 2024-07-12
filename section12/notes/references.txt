@@ -1,0 +1,29 @@
+What is a reference?
+
+  -An alias for a variable
+  -Must be initialized to a variable when declared 
+  -Cannot be null
+  -Once initialized cannot be made to refer to a different variable
+  -Very useful as function parameters
+  -Might be helpful to think of a reference as a constant pointer that is automatically
+  dereferenced
+
+--------------------------------------------------------
+Using references in range-based for loop
+
+  Without reference:
+    vector<string> stooges{"Larry", "Moe", "Curly"};
+    for(auto str: stooges)
+      str = "Funny"; //changes the copy
+
+    for(auto str: stooges)
+      cout << str << endl;  //Larry, Moe, Curly
+
+
+  Using reference:
+    vector<string> stooges{"Larry", "Moe", "Curly"};
+    for(auto &str: stooges) //reference
+      str = "Funny"; //changes the actual vector
+
+    for(auto str: stooges)
+      cout << str << endl; //Funny, Funny, Funny

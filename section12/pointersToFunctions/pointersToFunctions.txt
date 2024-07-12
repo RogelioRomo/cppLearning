@@ -1,0 +1,28 @@
+Passing pointers to a function
+  -Pass-by-reference with pointer parameters
+  -We can use pointers and the dereference operator to achieve passs-by-reference
+  -The function parameter is a pointer
+  -The actual parameters can be a pointer or address of a variable
+
+--------------------------------------------------------
+Pass-by-reference with pointers - defining the function
+
+  void double_data(int *int_ptr);
+
+  void double_data(int *int_ptr) {
+    *int_ptr *= 2;
+    //*int_ptr = *int_ptr * 2;
+  }
+
+--------------------------------------------------------
+Pass-by-reference with pointers - calling the functions
+
+int main () {
+  int value {10};
+
+  cout << value << endl; //10
+
+  double_data(&value);
+
+  cout << value << endl; //20
+}

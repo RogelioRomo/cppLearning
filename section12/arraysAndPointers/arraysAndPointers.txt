@@ -1,0 +1,57 @@
+Relationship between arrays and pointers
+  
+  -The value of an array name is the address of the first element in the array
+  -The value of a pointer variable is an address
+  -If the pointer points to the same data type as the array element then the pointer and array name can be used interchanheably (almost)
+
+-------------------------------------------------------------
+e.g.
+  int score[]{100,95,98};
+
+  cout << scores << endl; //0x61fec8
+  cout << *scores << endl; //100
+
+  int *scores_ptr{scores};
+
+  cout << score_ptr << endl; //0x61fec8
+  cout << *score_ptr << endl; //100
+
+-------------------------------------------------------------
+e.g.
+  int score[]{100,95,89};
+  int *score_ptr{scores};
+  cout << score_ptr[0] << endl; //100
+  cout << score_ptr[1] << endl; //95
+  cout << score_ptr[2] << endl; //89
+
+-------------------------------------------------------------
+e.g.
+  int score[]{100,95,89};
+  int *score_ptr{scores};
+  cout << score_ptr << endl;       //0x61ff10
+  cout << (score_ptr + 1) << endl; //we add the address of the next integer
+                                   //that is 4bytes away, thus 0x61ff14 (note the last digit '4')
+  cout << (score_ptr + 2) << endl; //we add the address of teh second next integer (2 integers away)
+  //tha is 8bytes away, thus 0x61ff18 (note the last digit '8')
+
+e.g. dereferencing
+  int score[]{100,95,89};
+  int *score_ptr{scores};
+  cout << *score_ptr << endl; //100
+  cout << *(score_ptr + 1) << endl; //95
+  cout << *(score_ptr + 2) << endl; //89
+
+-------------------------------------------------------------
+Subscript and offset notation equivalence
+  
+  int array_name[] {1,2,3,4,5};
+  int *pointer_name{array_name};
+
+
+Subscript notation:
+  array_name[index]
+  pointer_name[index]
+
+Offset notation:
+  *(array_name + index)
+  *(pointer_name + index)

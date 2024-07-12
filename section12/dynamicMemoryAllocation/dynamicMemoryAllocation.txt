@@ -1,0 +1,59 @@
+Dynamic memory allocation
+  
+  Allocating storage from the heap at runtime
+    -We often don't know how much storage we need until we need it
+    -We can allocate storage for a variable at run time 
+    -Recall C++ arrays
+      -We had to explicitly provide the size and it was fixed
+      -But vector grow and shrink dynamically
+    -We can use pointers to access newly allocated heap storage
+
+--------------------------------------------------------
+using new to allocate storage
+  e.g.
+    int *int_ptr{nullptr};
+    int_ptr = new int;        //allocates an integer on the heap
+    cout << int_ptr << endl;  //0x2747f28
+    cout << *int_ptr << endl; //41188048 - garbbage
+    *int_ptr = 100;
+    cout << *int_ptr <, endl; //100
+
+When you allocate storage in this manner, the storage is on the heap and the allocated
+storage contains garbage data until you initialize it.
+
+The allocated storage does not have a name, the only way to get to that storage is via pointer
+
+If you loose the pointer because it goes out of scope or you reasign it, then you lost
+your only way to get to that storage and now you have a memory leak
+
+When you are done using the storage then you must deallocate the storage so that its again available to the rest of the program
+
+--------------------------------------------------------
+Using delte to deallocate the storage
+
+  e.g.
+    int *int_ptr{nullptr};
+
+    int_ptr = new int; //allocate an integer on the heap
+
+    ... //use the pointer as you wish
+
+    delete int_ptr; //frees the allocated storage
+
+--------------------------------------------------------
+Using new[] to allocate storage for an array
+
+  int *array_ptr{nullptr};
+  int size{};
+
+  cout << "How big do you want the array?";
+  cin >> size;
+
+  array_ptr = new int[size]; //allocate array on the heap
+
+  ...
+
+  delete [] array_ptr; //frees allocated storage
+
+  //we can access the array here
+  //We'll se how in a few slides

@@ -1,0 +1,69 @@
+Pointer arithmetic
+  
+  -Pointers can be used in
+    -Assignment expressions
+    -Arithmetic expressions
+    -Comparison expressions
+  -C++ allows pointer arithmetic
+  -Pointer arithmetic only makes sense with raw arrays
+
+-------------------------------------------------------
+++ and --
+
+  (++) increments a pointer to point to the next array element
+  int_ptr++;
+
+  (--) decrements a pointer to point to the previous array element
+  int ptr--
+
+-------------------------------------------------------  
++ and -
+  (+) increment pointer by n * sizeof(type)
+  int_ptr += n; or int_ptr = int_ ptr + n;
+
+  (-) decrement pointer by n * sizeof(type)
+  int_ptr -= n; or int_ptr = int_ptr - n;
+
+-------------------------------------------------------
+Substracting two pointers
+
+  -Determine the number of elements between the pointers
+  -Both pointers must point to the same data type
+    int n = int_ptr2 - int_ptr1;
+
+If both pointers point to the same data type, then the result will be the
+number of elements between the two pointers
+
+If the pointers point to a different data type, then you get a compiler error
+
+-------------------------------------------------------
+Comparing two pointers == and !=
+  
+  -Determine if two pointers point to the same location
+  -Does NOT compare the data where they point!
+
+    string s1 {"Frank"};
+    string s2 ("Frank"};
+
+    string *p1 {&s1};
+    string *p2 {&s2};
+    string *p3 {&s1};
+
+    cout << (p1 == p2) << endl; //false (different address)
+    cout << (p1 == p3) << endl; //true (same address)
+
+-------------------------------------------------------
+Comparing the data pointer point to
+
+  -Determine if two pointers point to the same data
+  -You must compare the reference pointers
+
+    string s1 {"Frank"};
+    string s2 {"Frank"};
+    
+    string *p1 {&s1};
+    string *p2 {&s2};
+    string *p3 {&s1};
+    
+    cout << (*p1 == *p2) << endl; //true (same data)
+    cout << (*p1 == *p3) << endl; //true (same data)
