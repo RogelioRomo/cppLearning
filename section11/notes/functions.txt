@@ -1,0 +1,98 @@
+These are just c++ programs that do specific things
+  -C++ standard libraries (functions and classes)
+  -Third party libraries
+  -Our own functions and classes
+
+Functions are a way of modularization for programs
+  -These can separate code into logical self-contained units
+  -These units can be reused
+
+For more libraries see:
+en.cppreference.com
+
+--------------------------------------------------------------------------
+Syntax:
+  int function_name() {
+    statement(s);
+    return 0;
+  }
+
+  int function_name (int a) {
+    statement(s)
+    return 0;
+  }
+
+  //void is used when we know the function has no return
+  void function_name (int a, std::string ) {
+    statements(s);
+    return; //optional
+  }
+  
+  void function_name(int a, std::string b) {
+    statement(s);
+  }
+---------------------------------------------------------------------------
+e.g.
+  void say_hello() {
+    cout << "Hello" << endl;
+  }
+
+  int main() {
+    say_hello(); //we call the void function that will display "Hello"
+    return 0;
+  }
+
+----------------------------------------------------------------------------
+e.g.
+  <cmath>
+  Common mathematical calculations
+  Global functions called as:
+  
+    function_name(argument);
+    function_name(argument1, argument2, ...);
+
+    cout << sqrt(400.0) << endl; //20.0
+    double result;
+    result = pow(2.0, 3.0); //2.0^3.0
+
+----------------------------------------------------------------------------
+e.g.
+  
+  int add_numbers(int a, int b) {
+    return a + b;
+  }
+
+  //I can call the function and use the value that it returns
+  cout << add_numbers(20, 40);
+
+----------------------------------------------------------------------------
+Defining functions
+
+-name
+  the name of the function
+    should be meaningful
+    usually a verb or a verb phrase
+
+-parameter list
+  their types must be specified
+
+-return type
+  the type of the data that is returned from the function
+
+-body
+  the statement that are executed when the function is called in curly braces
+
+
+----------------------------------------------------------------------------
+Calling functions
+  Functions can call other functions
+  Compiler must know the function details BEFORE it is called!
+
+  int main() {
+    say_hello(); //called BEFORE it is defined ERROR
+    return 0;
+  }
+
+  void say_hello() {
+    cout << "Hello" << endl;
+  }

@@ -1,0 +1,61 @@
+Pass by reference
+
+  -Sometimes we want to be able to change the actual parameter from within the function body
+  -In order to achieve this we need the location or address of the actual parameter
+  -We saw how this is the effect with array, but what about other variable types?
+  -We can use reference parameters to tell the compiler to pass in a reference to the actual parameter
+  -The formal parameter will now be an alias for the actual parameter
+
+-----------------------------------------------------------------------------
+e.g.
+  
+  void scale_number(int &num);
+
+  in main() {
+    int number {1000};
+    scale_number(number);
+    cout << number << endl;
+    return 0;
+  }
+
+  void scale_number(int &num) {
+    if (num > 100)
+      num = 100;
+  }
+
+-----------------------------------------------------------------------------
+Pass by value VS pass by reference
+
+  by value:
+    
+    void print (std::vector<int> v);
+    
+    int main(){
+      std::vector<int> data {1,2,3,4,5};
+      print(data); //1 2 3 4 5
+      return 0;
+    }
+
+    void print(std:: vector<int> v) { //we are making a copy of the vector
+                                      //and alocating it to a different memory space
+                                      //this can cause performance issues when the data is very large
+      for(auto num: v)
+        cout << num << endl;
+    }
+
+  by_reference:
+
+     void print (std::vector<int> &v);
+    
+    int main(){
+      std::vector<int> data {1,2,3,4,5};
+      print(data); //1 2 3 4 5
+      return 0;
+    }
+
+    void print(std:: vector<int> &v) { //with reference we avoid creating a copy
+                                      //we work with the original data and thats better                                  
+      for(auto num: v)
+        cout << num << endl;
+    }
+

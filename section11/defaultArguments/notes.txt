@@ -1,0 +1,44 @@
+Default argument values
+  When a function is called, all arguments must be supplied
+  Sometimes some of the arguments have the same values most of the time
+  We can tell the compiler to use default values if the arguments are not supplied
+
+  Default values can be in the prototype or definition, not both
+    Best practice - in the prototype
+    Must appear at the tail end of the parameter list
+
+  Can have multiple default values
+    Must appear consecutively at the end of the parameter list
+
+----------------------------------------------------------------------------
+e.g. with NO default arguments
+  
+  double calc_cost(double base_cost, double tax_rate);
+
+  double calc_cost(double base_cost, double tax_rate){
+    return base_cost += (base_cost * tax_rate);
+  }
+
+  int main(){
+    double cost{0};
+    cost = calc_cost(100.0, 0.06);
+    return 0;
+  }
+
+----------------------------------------------------------------------------
+e.g. with default arguments
+
+  double calc_cost(double base_cost, double tax_rate = 0.06);
+
+  double calc_cost(double base_cost, double tax_rate){
+    return base_cost += (base_cost * tax_rate);
+  }
+
+  int main(){
+    double cost{0};
+    cost = calc_cost(200.0) //will use the default tax value
+    cost = calc_cost(100.0, 0.06); //will use 0.08 and not the default
+    return 0;
+  }
+
+----------------------------------------------------------------------------

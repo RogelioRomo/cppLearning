@@ -1,0 +1,24 @@
+Inline functions
+  -Functions calls have a certain amount of overhead
+  -This is related to what happends on the call stack
+  -Sometimes we have simple functions
+  -We can suggest to the compiler to compile them 'inline'
+    -avoids function call overhead
+    -generates inline assembly code
+    -faster
+    -could cause code bloat
+  -Compiler optimizations are very sophisticated
+    -will likely inline even without your suggestion
+
+------------------------------------------------------------
+e.g.
+    
+    inline int add_numbers(int a, int b) { //definition
+      return a + b;
+    }
+
+    int main() {
+      int result {0};
+      result = add_numbers(100, 200); //call
+      return 0;
+    }

@@ -1,0 +1,62 @@
+Explanation of process:
+
+Recursive Calls (Winding)
+
+    First Call: sum_of_digits(1234)
+        (1234 % 10) gives 4 (last digit)
+        sum_of_digits(1234 / 10) calls sum_of_digits(123) (removes last digit)
+        So, the expression becomes 4 + sum_of_digits(123)
+
+    Second Call: sum_of_digits(123)
+        (123 % 10) gives 3 (last digit)
+        sum_of_digits(123 / 10) calls sum_of_digits(12) (removes last digit)
+        So, the expression becomes 3 + sum_of_digits(12)
+
+    Third Call: sum_of_digits(12)
+        (12 % 10) gives 2 (last digit)
+        sum_of_digits(12 / 10) calls sum_of_digits(1) (removes last digit)
+        So, the expression becomes 2 + sum_of_digits(1)
+
+    Fourth Call: sum_of_digits(1)
+        (1 % 10) gives 1 (last digit)
+        sum_of_digits(1 / 10) calls sum_of_digits(0) (removes last digit)
+        So, the expression becomes 1 + sum_of_digits(0)
+
+    Fifth Call: sum_of_digits(0)
+        This hits the base case, and the function returns 0.
+
+Unwinding (Returning Values)
+
+Now, we start returning the values back up the call stack:
+
+    Return from Fifth Call: sum_of_digits(0) returns 0
+        So, 1 + sum_of_digits(0) becomes 1 + 0 which is 1
+        sum_of_digits(1) returns 1
+
+    Return from Fourth Call: sum_of_digits(1) returns 1
+        So, 2 + sum_of_digits(1) becomes 2 + 1 which is 3
+        sum_of_digits(12) returns 3
+
+    Return from Third Call: sum_of_digits(12) returns 3
+        So, 3 + sum_of_digits(12) becomes 3 + 3 which is 6
+        sum_of_digits(123) returns 6
+
+    Return from Second Call: sum_of_digits(123) returns 6
+        So, 4 + sum_of_digits(123) becomes 4 + 6 which is 10
+        sum_of_digits(1234) returns 10
+
+Finally, sum_of_digits(1234) returns 10, which is the sum of the digits of 1234.
+
+------------------------------------------------------------------------------------------
+
+
+sum_of_digits(1234) -> 4 + sum_of_digits(123)
+                      sum_of_digits(123) -> 3 + sum_of_digits(12)
+                                           sum_of_digits(12) -> 2 + sum_of_digits(1)
+                                                               sum_of_digits(1) -> 1 + sum_of_digits(0)
+                                                                                    sum_of_digits(0) -> 0
+                                                               return 1
+                                           return 3
+                      return 6
+return 10
+

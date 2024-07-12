@@ -1,0 +1,15 @@
+How do function calls work?
+
+Functions use the 'function call stack'
+  -Analogous to a stack of books
+  -LIFO - Last in First Out
+  -push and pop
+
+Stack frame or activation record
+  -Functions must return control to functin that called it
+  -Each time a function is called we create a new activation record and push it on stack
+  -When a function terminates we pop the activation record and return
+  -Local variables and functions parameters are allocated on the stack
+
+Stack size is finite 
+  -Stack overflow can happen when we run out of memory on the stack

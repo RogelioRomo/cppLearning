@@ -1,0 +1,21 @@
+Scope rules
+
+  -C++ uses scope rules to determine where an identifiercan be used
+  -C++ uses static or lexical scoping
+  -Local or block scope
+    -Identifiers declared in a block {}
+    -Function parameters have block scope
+    -Only visible within the block {} where declared
+    -Function local variables are only active while the function is executing
+    -Local variables are NOT preserved between function calls
+    -With nested blocks inned blocks can 'see' but outer blocks cannot 'see' in
+  -Static local variables
+    -Declared with static qualifier
+      static int value {10};
+    -Value IS preserved between function calls
+    -Only initialized the first time the function is called
+  -Global scope
+    -Identifier declared outside any function or class
+    -Visible to all parts of the program after the global identifier has been declared
+    -Global constants are OK
+    -Best practice - don't use global variables

@@ -1,0 +1,21 @@
+Recall challinge from section 9 below
+Your challenge for section 11 is to modularize your solution to the section 9 challenge by refactoring your solution so that it uses functions.
+
+You decide how to modularize the program
+You can use mysolution which is included in this file, or modularize your solution
+
+Here are a few hints:
+  -Create functions for each major function
+  -Keep the functions small
+  -Remember the boss/worker analogy
+  -Keep the vector declaration in the main function pass the vector objext to any function that requires it
+
+  DO NOT move the vector object outside main and make it global variable
+
+  -You can start by defining a function that displays the menu
+  -You can then define a function that reads the selection from the user and returns it in uppercase
+  -Create functions for each menu option
+  -Create functions that display the list of numbers, calculates the mean an so forth
+
+Take it one function at a time and take your time 
+Dont forget to use prototypes

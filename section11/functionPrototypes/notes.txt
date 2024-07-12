@@ -1,0 +1,42 @@
+The compiler must 'know' aout a function before is is used
+
+Define functions before calling them
+  OK for small programs
+  Not a practical solution for larger programs
+
+Use function prototypes
+  Tell the compiler what it needs to know without a full function definition
+  Also called forward declarations
+  Placed at the beginning of the program
+  Also used is our header files (.h)
+
+----------------------------------------------------------------------------------
+e.g.
+  int function_name(); //prototype
+
+  int function_name() {
+    statements(s);
+    return 0;
+  }
+
+----------------------------------------------------------------------------------
+e.g.
+  int function_name(int); //prototype
+                          //or
+  int function_name(int a); //prototype
+
+  int function_name(int a) {
+    statements(s);
+    return 0;
+  }
+
+----------------------------------------------------------------------------------
+e.g.
+  void function_name(int a, std::string b);
+  //or
+  void function_name(int, std::string);
+
+  void function_name(int a, std::string b) {
+    statement(s);
+    return; //optional
+  }
