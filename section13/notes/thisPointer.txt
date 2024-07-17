@@ -1,0 +1,39 @@
+this pointer
+  
+  -this is a reserved keyword
+  -contains the address of the object - so it's a pointer to the object
+  -can only be used in class scope
+  -all member access is done via the this pointer
+  -can be used by the programmer
+    -to access data member and methods
+    -to determine if two objects are the same
+    -can be dereferenced (*this) to yield the current object
+
+---------------------------------------------------
+e.g.
+  
+  void Account::set_balance(double bal) {
+    balance = bal; //this->balance is implied
+  }
+
+---------------------------------------------------
+To disambiguate identifier use
+  
+  void Account::set_balance(double balance) {
+    balance = balance; //which balance? the parameter
+  }
+
+  void Account::set_balance(double balance) {
+    this->balance = balance; //unanbiguous
+  }
+
+---------------------------------------------------
+To determine object identity
+  
+  -Sometimes its useful to know if two objects are the same object
+
+  int Account::compare_balance(const Account &other) {
+    if(this == &other)
+      std::cout << "The same objects" << std::endl;
+    ...
+  }

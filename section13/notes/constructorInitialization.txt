@@ -1,0 +1,61 @@
+Constructor initialization lists
+
+  -So far, all data member values have been set in the constructor body
+  -Constructor initialization lists
+    -are more efficient
+    -initialization lists immediately follows the parametes list
+    -initialized the data members as the object is created!
+    -order of initialization is the order of declaration in the class
+
+What we really want to do is had the member data values initialize to our values before the
+constructor body executes this is way more efficient since its true initialization
+
+This will be allowed by C++ by using initialization lists
+
+----------------------------------------------------------------------------------
+e.g.
+  
+  class Player {
+  private:
+    std::string name;
+    int health;
+    int xp;
+  public:
+    //overloaded constructors
+    Player();
+    Player(std::string name_val);
+    Player(std::string name_val, int health_val, int xp_val);
+  };
+
+  ***Previous way:***
+    Player::Player() {
+      name = "None"; //assignment not initialization
+      health = 0;
+      xp = 0;
+    }
+    
+    Player::Player(std::string name_val){
+
+      name = name_val;
+      health = 0;
+      xp = 0;
+    }
+    
+    Player::Player(std::string name_val, int health_val, int xp_val) {
+      name = name_val;
+      health = health_val;
+      xp = xp_val;
+    }
+
+    ***Better way:***
+      Player::Player()
+        :name{"None"}, health{0}, xp{0} {
+      }
+
+      Player::Player(std::String name_val)
+        :name{name_val}, health{0}, xp{0} {
+      }
+
+      Player::Player(std::string name_val, int health_val, int xp_val)
+        :name{name_val}, health{healt_val}, xp{xp_val} {
+      }

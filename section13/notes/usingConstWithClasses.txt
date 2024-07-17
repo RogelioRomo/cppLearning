@@ -1,0 +1,46 @@
+Using const with classes
+  
+  -Pass arguments to class member methods as const
+  -we can also create const objects
+  -what happens if we call member function on const objects?
+  -const-correctness
+
+-------------------------------------------------------------
+-Villain is a const object so it's attributes cannot change
+  
+  const Player villain {"Villain", 100, 55};
+
+-------------------------------------------------------------
+-What happens if we call member function on const objects?
+  
+  const Player villain {"Villain", 100, 55};
+
+  villain.set_name("Nice guy");                  //ERROR
+  std::cout << "Villain.get_name() << std::endl; //ERROR
+
+-------------------------------------------------------------
+  
+  const Player villain {"Villain", 100, 55};
+
+  void display_player_name(const Player &p) {
+    cout << p.get_name() << endl;
+  }
+
+  display_player_name(villain); //ERROR
+
+-------------------------------------------------------------
+const methods
+
+  class Player {
+  private:
+    ...
+  public:
+    std::string get_name() const; //this way
+  };
+
+now:
+  
+  const Player villain {"Villain", 100, 55};
+
+  villain.set_name("Nice guy");                 //ERROR
+  std::cout << villain.get_name() << std::endl; //OK

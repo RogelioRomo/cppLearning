@@ -1,0 +1,66 @@
+public, private, and protected access modifiers
+  
+  -public
+    -accesible everywhere
+
+  -private
+    -accessible only by members of friends of the class
+
+  -protected used with inheritance - we'll talk about it in the next section
+
+----------------------------------------------------------------------
+e.g. public
+  
+  class Class_name {
+  public:
+    declarations
+  };
+
+Every declaration after public: will be public until it encounters a different access modifier
+With public, members are accesible from outside the class
+
+----------------------------------------------------------------------
+e.g. private
+  
+  class Class_name {
+  private:
+    //declarations
+  };
+
+In a class by default every information inside is private if no access modifiers is specified
+With private, member cannot be accessed (or viewed) from outside the class
+
+----------------------------------------------------------------------
+e.g. protected
+  
+  class Class_name {
+  protected:
+    //declarations
+  };
+
+With protected members cannot be accessed from outside the class, however, they can be
+acessed in inherited classes
+
+----------------------------------------------------------------------
+e.g. private and public
+  
+  class Player {
+  private:
+    std::String name;
+    int health;
+    int xp;
+  public:
+    void talk(std::string text_to_say);
+    bool is_dead;
+  };
+
+  Player frank;
+  frank.name = "Frank";          //compiler error
+  frank.health = "1000";         //compiler error
+  frank.talk("ready to battle"); //OK
+
+  Player *enemy = new Player();
+  enemy->xp = 100;                     //Compiler error
+  enemy->talk("I will hunt you down"); //OK
+
+  delete enemy;

@@ -1,0 +1,60 @@
+Constructors
+  
+  -special member method
+  -invoked during object creation
+  -useful for initialization
+  -same name as the class
+  -no return type is specified
+  -can be overloaded
+
+e.g.
+  
+  class Player {
+  private:
+    std::string name;
+    int health;
+    int xp;
+  public:
+    //overloaded constructors
+    Player();
+    Player(std::string name);
+    Player(std::string name, int health, int xp);
+  };
+
+------------------------------------------------------------------
+Destructors
+  -Special member method
+  -Same name as the class proceeded with a tilde(~)
+  -invoked automatically when an object is destroyed
+  -no return type and no parameters
+  -only 1 destructor is allowed per class - cannot be overloaded!
+  -useful to release memory and other resources
+
+e.g.
+  class Player {
+  private:
+    std::string name;
+    int health;
+    int xp;
+  public:
+    Player();
+    Player(std::string name);
+    Player(std::string name, int health, int xp);
+    //Destructor
+    ~Player();
+  };
+
+-------------------------------------------------------------------
+Creating objects
+  
+  {
+    Player slayer;
+    Player frank {"Frank", 100, 4};
+    Player hero {"Hero"};
+    Player villain {"Villain"};
+    //use the objects
+    //4 destructors called
+  }
+
+  Player *enemy = new Player("Enemy", 1000, 0);
+  delete enemy; //detructor called

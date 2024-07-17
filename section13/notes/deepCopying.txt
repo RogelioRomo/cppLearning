@@ -1,0 +1,59 @@
+Deep copying
+
+User-provided copy constructor
+  
+  -Creates a copy of the pointed-to data
+  -Each copy will have a pointer to unique storage in the heap
+  -Deep copy when you have a raw pointer as a class data member
+
+---------------------------------------------------------------------------------------
+Deep
+
+  class Deep {
+  private:
+    int *datal //Pointer
+  public:
+    Deep(int d); //constructor
+    Deep(const Deep &source); //copy constructor
+    ~Deep(); //Destructor
+  };
+
+---------------------------------------------------------------------------------------
+Deep constructor
+  
+  Deep::Deep(int d) {
+    data = new int; //allocate storage
+    *data = d;
+  }
+
+---------------------------------------------------------------------------------------
+Deep copy constructor - delegating constructor
+
+  Deep::Deep(const Deep &source)
+    :Deep{*source.data} {
+    cout << "Copy constructor - deep" << endl;
+  }
+
+  Delegating to Deep(int) and pass in the int (*source.data) source is pointing to
+
+---------------------------------------------------------------------------------------
+Deep - a simple method that expects a copy
+
+  void display_deep(Deep s) {
+    cout << s.get_data_value() << endl;
+  }
+
+  When 's' goes out of scope the destructor is called and releases data.
+  No problem: since the storage being released is unique to 's'
+
+---------------------------------------------------------------------------------------
+Sample main - will not crash
+ int main() {
+    Deep obj1{100};
+    display_deep(obj1);
+
+    obj1.set_data_value(1000);
+    Deep obj2{obj1};
+
+    return 0;
+ } 

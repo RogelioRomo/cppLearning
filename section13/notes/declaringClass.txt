@@ -1,0 +1,54 @@
+Declaring a class
+  
+  class Class_name {
+    //declaration(s);
+  };
+
+---------------------------------------------------------------------------------------
+e.g.1
+
+  we create a class:
+    
+    class Player {
+      //attributes
+      std::string name;
+      int health;
+      int xp;
+
+      //methods
+      void talk(std::String text-to-say);
+      bool is_dead();
+    };
+
+  Now we create objects from that class;
+
+    Player frank;
+    Player hero;
+
+    Player *enemy = new Player();
+    delete enemy;
+
+---------------------------------------------------------------------------------------
+e.g.2
+  
+  We create a class;
+    
+    class Account {
+      //attributes
+      std::string name;
+      double balance;
+
+      //methods
+      bool withdraw(double amount);
+      bool deposit(double amount);
+    };
+
+  Now we create objects from the class:
+    
+    Account frank_account;
+    Account jim_account;
+
+    Account accounts[] {frank_account, jim_account};
+
+    std::vector<Account> accounts1 {frank_account};
+    accounts1.push_back(jim_Account);

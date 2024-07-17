@@ -1,0 +1,35 @@
+Accessing class members
+
+  -We can access
+    -Class attributes
+    -Class methods
+
+  -Some class members will not be accesible (more on the that later)
+  -We need an object to access instance variables
+
+-----------------------------------------------------------------------------
+If we have an object (dot operator)
+
+  -using the dot operator
+    
+    Account frank_account;
+
+    frank_account.balance;          //we access to frank_account objects and its attribute balance
+    frank_account.deposit(1000.00); //we access to frank_account object and its method deposit
+
+-----------------------------------------------------------------------------
+If we have a pointer to an object (member of pointer operator)
+
+  -Dereference the pointer then use the dot operator
+
+    Account *frank_account = new Account();  //we use dinamically memory allocation
+
+    (*frank_account).balance;
+    (*frank_account).deposit(1000.00);
+
+  -Or use the member pointer operator (arrow operator)
+    
+    Account *frank_account = new Account();
+
+    frank_account->balance;         //-> first dereference the pointer and then applies the dot'.' operator
+    frank_account->deposit(1000.00);

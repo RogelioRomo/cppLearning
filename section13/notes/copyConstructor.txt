@@ -1,0 +1,77 @@
+Copy constructor
+
+  -When objects are copied, C++ must create a new object from an existing object
+  -when is a copy of an object made?
+    -assign object by values as a parameters
+    -returning an object from a function by value
+    -constructing one object based on another of the same class
+
+  -C++ must have a way of accomplishing this so it provides a compiler-defined copy
+  constructor if you don't 
+
+---------------------------------------------------------------------------------------
+Pass object by-value
+  
+  Player hero{"Hero", 100, 20};
+
+  void display_player(Player p){
+    //p is a COPY of hero in this example
+    //use p
+    //destructor for p will be called
+  }
+
+  display_player(hero);
+
+---------------------------------------------------------------------------------------
+Return object by value
+
+  Player enemy;
+
+  Player create_super_enemy() {
+    Player an_enemy{"Super enemy", 1000, 1000};
+    return an_enemy; //A COPY of an_enemy is returned
+  }
+
+  enemy = create_super_enemy();
+
+---------------------------------------------------------------------------------------
+  Player hero {"Hero", 100, 100};
+  Player another_hero{hero}; //A Copy of hero is made
+
+---------------------------------------------------------------------------------------
+-If you don't provide your own way of copying objects by value then the compiler provides a default way of copying objects
+
+-Copies the values of each data member to the new object
+  -default memberwise copy
+
+-Perfectly fine in many cases
+
+-Beware if you have a pointer data member
+  -Pointer will be copied
+  -Not what it is pointing to
+  -Shallow vs deep copy - more in the next video
+
+---------------------------------------------------------------------------------------
+Best practices
+
+  -Provide a copy constructor when your class has raw pointer members
+  -Provide the copy constructor with a const reference parameter
+  -Use STL classes as they already provide copy constructors
+  -Avoid using raw pointer data members if possible
+
+---------------------------------------------------------------------------------------
+Syntax
+  Type::Type(const Type &source);
+
+  Player::Player(const Player &source);
+
+  Account::Account(const Account &source);
+
+---------------------------------------------------------------------------------------
+Player
+  
+  Player::Player(const Player &source)
+    :name{source.name},
+    health{source.health},
+    xp{source.xp} {
+  }

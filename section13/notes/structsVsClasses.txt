@@ -1,0 +1,40 @@
+Struct vs classes
+  
+  -In addition to define a class we can declare a struct
+  -Struct comes from the C programing language
+  -Essentially the same as a class expect
+    -members are public by default
+
+--------------------------------------------------------
+e.g.
+  class Person {
+    std::string name;
+    std::string get_name();
+  };
+
+  Person p;
+  p.name = "Frank"; //Compile error - private
+  std::cout << p.get_name(); //compiler error - private
+
+  -------------
+  struct Person {
+    std::string name;
+    std::string get_name(); //Why if name is public?
+  };
+
+  Person p;
+  p.name = "Frank"; //OK - public
+  std::cout << p.get_name(); //OK - public
+
+-------------------------------------------------------
+Thats basically the main difference about classes and structs
+Some general guideline to know what to use are the next:
+  
+  -Struct
+    -use struct for passive opbjects with public access
+    -Don't declare methods in struct
+
+  -class
+    -use class for active objects with private access
+    -implement getters/setters as needed
+    -implement member methods as needed

@@ -1,0 +1,69 @@
+Before OOP
+
+  -procedural programming
+    -focus is on processes or actions that a program takes
+    -programs are typically a collection of functions
+    -data is declared separately
+    -data is passed as arguments into functions
+    -fairly easy to learn
+
+  -procedural programming limitations
+    -functions need to know the structure of the data
+      -if the structure of the data changes many functions must be changed
+    -As programs get larger they become more:
+      -difficult to understand
+      -difficult to maintain
+      -difficult to extend
+      -difficult to debug
+      -difficult to reuse code
+      -fragile and easier to break
+
+----------------------------------------------------------------------
+What is OOP?
+  
+  Classes and objects
+    -Focus is on classes that model real-world domain entities
+    -Allows developers to think at a higher level of abstraction
+    -Used succesfully in very large programs
+  
+  Encapsulation
+    -Objects contain data AND operations that work on that data
+    -Abstract Data Type (ADT)
+
+  Information-hiding
+    -Implementations-specific logic can be hidden
+    -Users of the class code the interface since they don't need to know the implementation
+    -More abstraction
+    -Easier to text, debug, maintain and extend
+
+  Reusability
+    -Easier to reuse classes in other applications
+    -Faster development
+    -Higher quality
+
+  Inheritance
+    -Can create new classes in term of existing classes
+    -Reusability
+    -Polymorphic classes
+
+  -Polymorphism and more...
+
+------------------------------------------------------------------------
+Limitations
+  
+  -Not a panacea
+    -OOP won't make bad code better
+    -Not suitable for all types of problems
+    -Not everything decomposes to a class
+
+  -learning curve
+    -Usually a steeper learning curve, especially for C++
+    -Many OOP languages, many variations of OOP concepts
+
+  -Design
+    -Usually more up-front design is necessary to create good models and hierarchies
+
+  -Programs can be:
+    -Larger in size
+    -Slower
+    -More complex

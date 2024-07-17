@@ -1,0 +1,71 @@
+Shallow vs. deep copying
+  
+  -consider a class that contains a pointer as a data member
+  -constructor allocates storage dynamically and initializes the pointer
+  -destructor releases the memory allocated by teh constructor
+  -what happens in the default copy contructor?
+
+------------------------------------------------------------------------
+Default copy constructor
+  
+  -memberwise copy
+  -each data member is copied from teh rouce object
+  -the pointer is copied NOT what it points to (shallow copy)
+  -Problem: when we relase the storage in the destructor, the other objects still refers to
+  the released storage!
+
+------------------------------------------------------------------------
+Shallow
+  
+  class Shallow {
+  private:
+    int *data; //Pointer
+  public:
+    Shallow(int d); //constructor
+    Shallow(const Shallow &source); //copy Constructor
+    ~Shallow(); //destructor
+  };
+
+  Shallow::Shallow(int d) {
+    data = new int;   //Allocate storage
+    *data = d;
+  }
+
+  Shallow::~Shallow() {
+    delete data;
+    cout << "Destructor freeing data" << endl;
+  }
+
+  //copy constructor
+  Shallow::Shallow(const Shallow &source)
+    :data(source.data) {
+    cout << "Copy constructor - shallow" << endl;
+  }
+
+  Shallow copy - only the pointer is copied - not what it is pointing to!
+  Problem: source and the newly created object BOTH point to the SAME data area!
+
+---------------------------------------------------------
+Shallow - a simple method that expects a copy
+
+  Shallow::Shallow(const Shallow &source)
+    :data(source.data) {
+    cout << "Copy constructor - shallow" << endl;
+  }
+
+  SHALLOW COPY - only the pointer is copied - not what it is pointing to!
+  Problem: source and the newly created objects BOTH point to the SAME data area!
+
+--------------------------------------------------------
+Sample main - will likely crash
+  
+  int main() {
+    Shallow obj1{100};
+    display_shallow(obj1);
+    //obj1' dta has been released!!!
+
+    obj1.set_data_value(1000);
+    shallow obj2{obj1};
+    cout << "Hello world" << endl;
+    return 0;
+  }
