@@ -1,0 +1,89 @@
+Unary operators as member methods (++, --, -, !)
+
+  ReturnType::operatorOp();
+
+  Number Number::operator-();
+  Number Number::operator++(); //pre-increment
+  Number Number::operator++(int); //post-increment
+  bool Number::operator!() const;
+
+  Number n1{100};
+  Number n2 = -n1; //operator-()
+  n2 = ++n1;       //operator++()
+  n2 = n1++;       //operator++(int)
+
+---------------
+Mystring operator- make lowercase
+
+  Mystring larry1 {"Larry"};
+  Mystring larry2;
+
+  larry1.display(); //LARRY
+
+  larry2 = -larry1; //larry1.operator-()
+
+  larry1.display(); //LARRY
+  larry2.display(); //larry
+
+--------------
+
+  Mystring Mystring::operator-() const {
+    char *buff = new char[std::strlen(str) + 1];
+    std::strcpy(buff, str);
+    for(size_t i=0; i<std::strlen(buff); i++)
+      buff[i] = std::tolower(buff[i]);
+    Mystring temp {buff};
+    delete[] buff;
+    return temp;
+  }
+
+--------------------------------------------------------------------------
+Binary operators as global functions (+, -, ==, !=, <, >, etc.)
+  
+  ReturnType operatorOp(const Type &lhs, const Type &rhs);
+
+  Number Number::operator+(const Number &rhs) const;
+  Number Number::operator-(const Number &rhs) const;
+  Number Number::operator==(const Number &rhs) const;
+  Number Number::operator<(const Number &rhs) const;
+
+  Number n1 {100}, n2 {200};
+  Number n3 = n1 - n2;       //operator+(n2)
+  n3 = n1 - n2;              //operator-(n2)
+  if(n1 == n2)...            //operator==(n2)
+
+-------------
+Mystring operator==
+
+  bool Mystring::operator==(const Mystring &rhs) const {
+    if(std::strcmp(str, rhs.str) == 0)
+      return true;
+    else
+      return false;
+  }
+
+//if (s1 == s2) //s1 and s2 are Mystring objects
+
+--------------------------------------------------------------------------
+Mystring operator+ (concatenation)
+
+  Mystring larry {"Larry"};
+  Mystring moe {"Moe"};
+  Mystring stooges {" is one of the three stooges"};
+
+  Mystring result = larry + stooges; //larry.operator+(stooges);
+  result = moe + " is also a stooge"; //moe.operator+(" is also a stooge");
+  result = "Moe" + stooges; //"Moe".operator+(stooges) ERROR
+
+----------------
+
+Mystring Mystring::operator+(const Mystring &rhs) {
+  size_t buff_size = std::strlen(str) + std::strlen(rhs.str) + 1;
+  char *buff = new[buff_size];
+  std::strcpy(buff, str);
+  std::strcat(buff, rhs.str);
+  Mystring temp {buff};
+  delte[] buff;
+  return temp;
+}
+

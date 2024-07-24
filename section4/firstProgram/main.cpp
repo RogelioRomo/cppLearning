@@ -4,14 +4,15 @@
 // and all cpp program should only have 1 main function.
 // In this case an integer main function
 
-int main() {
+int main()
+{
 
   // variable to store the value the user enters (type integer)
   int favorite_number;
 
   // output to print the string and to tell the user to type something
   //<< its called stream insertion operator. In this case we insert anything
-  //that is on the right side of the output stream that gets displayes on
+  // that is on the right side of the output stream that gets displayes on
   // console
   std::cout << "Enter your favorite number between 1 and 100: ";
 
