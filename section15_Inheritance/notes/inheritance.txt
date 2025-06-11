@@ -1,0 +1,68 @@
+Inheritance
+
+What is it and why it is used?
+
+-Provides a method for creating new classes from existing classes
+-The new class contains the data and behaviors of the existing class
+-Allow for reuse of existing classes
+-Allows us to focus on the common attributes among a set of classes
+-Allows new classes to modify behaviors of existing classes to make it unique
+  -without actually modifying the original class
+
+--------------------------------------------------
+Relate classes
+
+  -Player, enemy, level boss, hero, super player, etc.
+  -Account, savings account, checking account, trust account, etc.
+  -Shape, line oval, circle square, etc.
+  -Person, employee, student, faculty, staff, administrator, etc.
+
+--------------------------------------------------
+Account example
+
+  -Account
+    -balance, deposit, withdraw, ...
+  -Savings Account
+    -balance, deposit, withdraw, interest rate, ...
+  -Checking Account
+    -balance, deposit, withdraw, minimum balance, per check fee, ...
+  -Trust Account
+    -balance, deposit, withdraw, interest rate, ...
+
+---------
+Accounts - without inheritance - code duplication
+
+  class Account {
+    //balance, deposit, withdraw, ...
+  };
+
+  class Savings_Account {
+    //balance, deposit, withdraw, interest rate, ...
+  };
+
+  class Checking_Account {
+    //balance, deposit, withdraw, minimum balance, per check fee, ...
+  };
+
+  class Trust_Account {
+    //balance, deposit, withdraw, interest rate, ...
+  };
+
+--------
+Accounts - with inheritance - code reuse
+
+  class Account {
+    //balance, deposit, withdraw, ...
+  };
+
+  class Savings_Account: public Account {
+    //interest rate, specialized withdraw...
+  };
+
+  class Checking_Account: public Account {
+    //minimum balance, per check fee, specialized withdraw, ...
+  };
+
+  class Trust_Account: public Account {
+    //interest rate, specialized withdraw, ...
+  };

@@ -1,0 +1,116 @@
+What is using a class as an interface?
+
+-An abstract class that has only pure virtual functions
+-These functions provide a general set of services to the user of teh class
+-Provided as public
+-Each subclasses is free to implement these services as needed
+-Every service (method) must be implemented
+-The service type information is strictly enforced
+
+--------------------------------------------
+A printable example
+
+  -C++ does not provide true interfaces
+  -We use abstract classes and pure virtual functions to achieve
+  -Suppose we want to be able to provide Printable support for any object we wish
+  without knowing its implementation at compile time
+
+    std::cout << any_object << std::endl;
+
+  -any_object must conform to the Printable interface
+
+  class Printable {
+    friend ostream &operator<<(ostream &, const Printable &obj);
+  public:
+    virtual void print(ostream &os) const = 0;
+    virtual ~Printable() {}
+    ...
+  };
+
+  ostream &operator<<(ostream &os, const Printable &obj) {
+    obj.print(os);
+    return os;
+  }
+
+  class Any_class: public Printable {
+  public:
+    ..must override Printable::print()
+    virtual void print(ostream &os) override {
+      os << "Hi from Any_class";
+    }
+    ...
+  };
+
+-----------------
+
+  Any_Class *ptr = new Any_class();
+  cout << *ptr << endl;
+
+  void function1(Any_Class &obj) {
+    cout << obj << endl;
+  }
+
+  void function2(Printable &obj) {
+    cout << obj << endl;
+  }
+
+  function1(*ptr); //"Hi from Any_class"
+  function2(*ptr); //"Hi from Any_class"
+
+-----------------
+
+  class Shape {
+  public:
+    virtual void draw() = 0;
+    virtual void rotate() = 0;
+    virtual ~Shape() {};
+    ...
+  };
+
+  class Circle: public Shape {
+  public:
+    virtual void draw() override {/* code */};
+    virtual void rotate() override {/* code */};
+    virtual ~Shape() {};
+    ...
+  };
+
+  class Circle: public Shape {
+  public:
+    virtual void draw() override {/* code */};
+    virtual void rotate() override {/* code */};
+    virtual ~Circle() {};
+    ...
+  };
+
+-----------------
+Sometime you'll se classes that are intended to be used as interface classes
+named with a capital 'i' preceiving the class name
+
+  class I_Shape {
+  public:
+    virtual void draw() = 0;
+    virtual void rotate() = 0;
+    virtual ~I_shape() {};
+    ...
+  };
+
+  class Circle: public i_Shape {
+  public:
+    virtual void draw() override {/* code */};
+    virtual void rotate() override {/* code */};
+    virtual ~Circle() {};
+    ...
+  };
+
+  vector<I_Shape *> shaped;
+
+  I_Shape *p1 = new Circle();
+  I_Shape *p2 = new Line();
+  I_Shape *p3 = new Square();
+
+  for(auto const &shape: shapes) {
+    shape->rotate();
+    shape->draw();
+  }
+  //delete the pointers

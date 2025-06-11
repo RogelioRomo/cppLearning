@@ -1,0 +1,48 @@
+Using a Base class pointer
+
+-For dynamic polymorphism we must have:
+
+  -Inheritance
+  -Base class pointer or Base class reference
+  -Virtual functions
+
+-----------------------------------------
+
+  Account *p1 = new Acount();
+  Account *p2 = new Savings();
+  Account *p3 = new Checking();
+  Account *p4 = new Trust();
+
+  p1->withdraw(1000); //Account::withdraw
+  p2->withdraw(1000); //Savings::withdraw
+  p3->withdraw(1000); //Checking::withdraw
+  p4->withdraw(1000); //Trust::withdraw
+
+  delete the pointers;
+
+-------------
+
+  Account *p1 = new Account();
+  Account *p2 = new Savings();
+  Account *p3 = new Checking();
+  Account *p4 = new Trust();
+
+  Account *array[] = {p1, p2, p3, p4};
+
+  for (auto 1=0; i<4; ++i)
+    array[i]->withdraw(1000);
+
+-------------
+
+  Account *p1 = new Account();
+  Account *p2 = new Savings();
+  Account *p3 = new Checking();
+  Account *p4 = new Trust();
+
+  vector<Account *> accounts
+      {p1,p2,p3,p4};
+
+  for(auto acc_ptr: accounts)
+    acc_ptr->withdraw(1000);
+
+  delete the pointers;

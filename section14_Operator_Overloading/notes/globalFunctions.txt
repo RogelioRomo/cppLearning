@@ -1,0 +1,91 @@
+Unary operators as global functions (++, --, -, !)
+
+  ReturnType operatorOp(Type &obj);
+
+  Number operator-(const Number &obj);
+  Number operator++(Number &obj); //pre-increment
+  Number operator++(Number &obj, int); //post-increment
+  bool operator!(const Number &obj);
+
+  Number n1{100};
+  Number n2 = -n1; //operator-(n1)
+  n2 = ++n1;       //operator++(n1)
+  n2 = n1++;       //operator++(n1, int)
+
+---------------
+Mystring operator- make lowercase
+
+  Mystring larry1 {"LARRY"};
+  Mystring larry2;
+
+  larry1.display(); //Larry
+
+  larry2 = -larry1; //operator-(larry1)
+
+  larry1.display(); //LARRY
+  larry2.display(); //larry
+
+--------------
+-Often declared as friend functions in the class declaration
+
+  Mystring operator-(const Mystring &obj) {
+    char *buff = new char[std::strlen(obj.str) + 1];
+    std::strcpy(buff, obj.str);
+    for(size_t i=0; i<std::strlen(buff); i++)
+      buff[i] = std::tolower(buff[i]);
+    Mystring temp {buff};
+    delete[] buff;
+    return temp;
+  }
+
+--------------------------------------------------------------------------
+Binary operators as global functions (+, -, ==, !=, <, >, etc.)
+  
+  ReturnType operatorOp(const Type &lhs, const Type &rhs);
+
+  Number operator+(const Number &lhs, const Number &rhs);
+  Number operator+(const Number &lhs, const Number &rhs);
+  Number operator+(const Number &lhs, const Number &rhs);
+  Number operator+(const Number &lhs, const Number &rhs);
+
+  Number n1 {100}, n2 {200};
+  Number n3 = n1 + n2;       //operator+(n1, n2)
+  n3 = n1 - n2;              //operator-(n1, n2)
+  if(n1 == n2)...            //operator==(n1, n2)
+
+-------------
+Mystring operator==
+
+  bool operator==(const Mystring &lhs, const Mystring &rhs) {
+    if(std::strcmp(lhs.str, rhs.str) == 0)
+      return true;
+    else
+      return false;
+  }
+
+-If we declared as a friend of Mystring can access private str attribute
+-Otherwise we must use geter methods
+
+--------------------------------------------------------------------------
+Mystring operator+ (concatenation)
+
+  Mystring larry {"Larry"};
+  Mystring moe {"Moe"};
+  Mystring stooges {" is one of the three stooges"};
+
+  Mystring result = larry + stooges; //operator+(larry, stooges);
+  result = moe + " is also a stooge"; //operator+(moe, " is also a stooge");
+  result = "Moe" + stooges; //OK with non-member functions
+
+----------------
+
+Mystring operator+(const Mystring &lhs, const Mystring &rhs) {
+  size_t buff_size = std::strlen(lhs.str) + std::strlen(rhs.str) + 1;
+  char *buff = new[buff_size];
+  std::strcpy(buff, lhs.str);
+  std::strcat(buff, rhs.str);
+  Mystring temp {buff};
+  delte[] buff;
+  return temp;
+}
+

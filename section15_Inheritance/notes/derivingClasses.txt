@@ -1,0 +1,57 @@
+C++ deriving syntax
+
+  class Base {
+    //base class members...
+  };
+
+  class Derived: access-specifier Base {
+    //derived class members...
+  };
+
+  Access-specifier can be: public, private, or protected
+
+---------------------------------------------------------
+Types of inheritance in C++
+
+  -public
+    -most common
+    -establishes 'is-a' relationship between Derived and Base classes
+
+  -private and protected
+    -establishes "derived class has a base class" relationship
+    -"is implemented in terms of" relationship
+    -different from composition
+
+--------------------------------------------------------
+Declaring
+
+  class Account {
+    //Account class members...
+  };
+
+  class Savings_Account: public Account {
+    //Savings_Account class members...
+  };
+
+  Savings_Account 'is-a' Account
+
+--------------------------------------------------------
+C++ creating objects
+
+  Account account{};
+  Account *p_account = new Account();
+
+  account.deposit(1000.0);
+  p_account->withdraw(200.0);
+
+  delete p_account;
+
+---------
+
+  Savings_Account sav_account{};
+  Savings_Account *p_sav_account = new Savings_Account();
+
+  sav_account.deposit(1000.0);
+  p_sav_account->withdraw(200.0);
+
+  delete p_sav_account;

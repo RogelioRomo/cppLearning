@@ -1,0 +1,60 @@
+Section 14 challenge
+Operator overloading
+-----------------------
+Overload the following operators in the provided Mystring class
+
+To gain experience overloading operator you shoud do this challenge twice
+First, overload the opperators using member function and then in another
+project overload the same operators again using non-member functions
+
+Please do it once using member methods and then again using non-member functions
+
+Here is a list of some of the operators that you can overload for this class:
+
+- | Unary minus. Returns the lowercase version of the object's string (-s1)
+
+== | Returns true if the two strings are equal (s1 == s2)
+
+!= | Returns true if the two strings are not equal (s1 != s2)
+
+< | Returns true if the lhs string is lexically less then the rhs string (s1 < s2)
+
+> | Returns true if the lhs string is lexically greater than the rhs string (s1 > s2)
+
++ | Concatenation. Returns an object that concatenates the lhs and rhs (s1 + s2)
+
++= | Concatenate the rhs string to the lhs string and store the result in the lhs object (s1 += s2)
+
++= | Concatenate the rhs string to the lhs string and store the result in lhs object (s1 += s2)
+
+* | Repeat. Result in a string that is copied n times (s2 * 3)
+  e.g.
+    s2 = "abc";
+    s1 = s2 * 3;
+    s1 will result in "abcabcabc"
+
+*= | Repeat the string on the lhs n times and store the result back in the lhs object
+  e.g.
+  s1 = "abc";
+  s1 *= 4;
+  s1 will result in "abcabcabcabc"
+
+If you wish to overload the ++ and -- operators remember that they have pre and post versions
+The semantics should be as follows (this shows the member metho version):
+
+  Mystring &operator++() {
+    //do what ever you want increment do to - maybe make all character uppercase?
+    return *this;
+  }
+
+  //Note that post-increment returns a Mystring by value not by reference
+  Mystring operator++(int) {//post-increment
+    Mystring temp (*this); //make copy
+    operator++(); //call pre-increment - make sure you call pre-increment!
+    return temp; //return the old value
+  }
+
+Hints:
+1. Take advantage of the std::strcmp function for the equality operators
+2. The += and *= operators should return a Mystring &
+3. Rather than duplicate code in the += and *= function, use the + and * operators which you have already overloaded!

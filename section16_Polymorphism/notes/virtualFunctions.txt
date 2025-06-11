@@ -1,0 +1,32 @@
+Virtual functions
+
+  -Redefined functions are bound statically
+  -Overridden functions are bound dynamically
+  -Virtual functions are Overridden
+  -Allows us to treat all objects generally as objects of the Base class
+
+---------------------------------------------
+Declaring virtual functions
+
+  -Declare the functions you want to override as virtual in the Base class
+  -Virtual functions are virtual all the way down the hierarchy from this point
+  -Dynamic polymorphism only via Account class pointer or reference
+
+  class Account {
+  public:
+    virtual void withdraw(double amount);
+    ...
+  };
+
+--------------------------------------------
+
+  -override the functions in the Derived classes
+  -Function signature and return type must match EXACTLY
+  -Virtual keyboard not required but is best practice
+  -if you don't provide an Overridden version it is inherited form its base class
+
+  class Checking: public Account {
+  public:
+    virtual void withdraw(double amount);
+    ...
+  };

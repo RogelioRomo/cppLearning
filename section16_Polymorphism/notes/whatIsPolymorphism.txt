@@ -1,0 +1,120 @@
+What is polymorphism?
+
+-Fundamental to object-oriented programming
+
+-Polymorphism
+  -Compile-time / early binding / static binding
+  -Run-time / late binding / dynamic binding
+
+-Runtime polymorphism
+  -Being able to assign different meaning to the same function at run-time
+
+-Allows us to program more abstractly
+  -Think general vs specific
+  -Let C++ figure out which function to call at run-time
+
+-Not the default C++, run-time polymorphism is achieved via
+  -Inheritance
+  -Base class pointers or references
+  -Virtual functions
+
+-------------------------------------------
+Types of polymorphism in C++
+
+                            --------------
+                           | Polymorphism |
+                            --------------
+
+                --------------              ----------
+               | Compile-time |            | Run-time |
+                --------------              ----------
+                      |                          |
+                      ---------                  |
+                              |                  |
+        --------------   -------------      -----------
+       |   Function   | |  Operator   |    | Function  |
+       | overloading  | | overloading |    | overiding |
+        --------------   -------------      -----------
+
+-------------------------------------------
+An non-polymorphism example - Static binding
+
+  Account a;
+  a.withdraw(1000); //Account::withdraw()
+
+  Savings b;
+  b.withdraw(1000); //Savings::withdraw()
+
+  Checking c;
+  c.withdraw(1000); //Checking::withdraw()
+
+  Trust d;
+  d.withdraw(1000); //Trust::withdraw()
+
+  Account *p = new Trust();
+  P->withdraw(1000); //Account::withdraw()
+                     //should be
+                     //Trust::withdraw
+
+-------------------------------------------
+  void display_account(const Account &acc) {
+    //will always use Account::display;
+  }
+
+  Account a;
+  display_account(a);
+
+  Savings b;
+  display_account(b);
+
+  Checking c;
+  display_account(c);
+
+  Trust d;
+  display_account(d);
+
+-------------------------------------------
+A polymorphism example - dynamic binding
+
+  Account a;
+  a.withdraw(1000); //Account::withdraw()
+
+  Savings b;
+  b.withdraw(1000); //Savings::withdraw()
+
+  Checking c;
+  c.withdraw(1000); //Checking::withdraw()
+
+  Trust d;
+  d.withdraw(1000); //Trust::withdraw()
+
+  Account *p = new Trust();
+  P->withdraw(1000); //Trust::withdraw()
+
+withdraw method is now virtual in Account
+The idea of using virtual functions tells the compiler not to bind
+the call at compile time but instead defer the binding to runtime, and
+at runtime a check will occur to see exactly what *p is pointing
+to (in this example), and then that object's method will be called
+(withdraw in this case)
+
+--------------------
+
+  void display_account(const Account &acc) {
+    acc.display();
+    //will always call the display method
+    //depending on the object's types
+    //at RUN-TIME
+  }
+
+  Account a;
+  display_account(a);
+
+  Savings b;
+  display_account(b);
+
+  Checking c;
+  display_account(c);
+
+  Trust d;
+  display_account(d);

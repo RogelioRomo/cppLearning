@@ -1,0 +1,36 @@
+-A derived class inherits from two or more base classes at the same time
+
+-The Base classes may belong to unrelated class hierarchies
+
+-A Department Chair
+  -Is-A Faculty and
+  -Is-A Administrator
+
+                              Person
+                                |
+                              ------
+                             |      |
+                         Employee Student
+                             |
+                 -------------------------
+                |            |            |
+              Faculty   Administrator   Staff
+                |            |
+                 ------------
+                      |
+                  Department
+                    Chair
+
+
+-------------------
+C++ syntax
+
+  class Department_Chair:
+  public Faculty, public Administrator {
+    ...
+  };
+
+  -Beyond the scope of this course
+  -Some compelling use-classes
+  -Easily misused
+  -Can be very complex

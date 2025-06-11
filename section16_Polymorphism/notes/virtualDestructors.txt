@@ -1,0 +1,21 @@
+Virtual destructors
+
+  -Problems can happen when we destroy polymorphic ojects
+
+  -If a derived class is destroyed by deleting its storage via the base class pointer
+  and the class a non-virtual destructor. Then the behavior is undefined in the C++ standard
+
+  -Derived objects must be destroyed in the correct order starting a the correct destructor
+
+Solution/rule
+
+  -If a class has virtual functions
+  -ALWAYS provide a public virtual destructor
+  -If base class destructor is virtual then all derived class destructor are also virtual
+
+  class Account {
+  public:
+    virtual void withdraw(double amount);
+    virtual ~Account();
+    ...
+  };

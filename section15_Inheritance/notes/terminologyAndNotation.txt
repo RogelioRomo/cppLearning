@@ -1,0 +1,36 @@
+Terminology
+
+  -Inheritance
+    -Process of creating new classes fomr existing classes
+    -Reuse mechanism
+
+  -Single Inheritance
+    -A new class is created from another 'single' class
+
+  -Multiple Inheritance
+    -A new class is created from two (or more) other classes
+
+----------------------------------------------------------
+
+  -Base class (parent class, super class)
+    -The class being extended or inherited from
+
+  -Derived class (child class, sub class)
+    -The class being created from the Base class
+    -Will inherit attributs and operations from Base class
+
+----------------------------------------------------------
+
+  -"Is-A" relationship
+    -Public inheritance-derived classes are subtypes of their Base classes
+    -Derived classes are sub-type of their base classes
+    -Can use a derived class object wherever we use a base class object
+
+  -Generalization
+    -Combining similar classes into a single, more general class based on common attributes
+
+  -Specialization
+    -Creating new classes from existing classes proving more specialized attributes or operations
+
+  -Inheritance or Class Hierarchies
+    -Organization of our inheritance relationships

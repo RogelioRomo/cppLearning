@@ -1,0 +1,52 @@
+Passing arguments to base class constructors
+
+  -The base part of a Derived Class must be initialized first
+  -How can we control exactly which Base class constructor is used during initialization
+  -We can invoke the whichever Base class constructor we wish in the initializationList of the Derived Class
+
+------------------------------------------------
+  class Base {
+  public:
+    Base();
+    Base(int);
+    ...
+  };
+
+  Derived::Derived(int x)
+    : Base(x), {optional initialized for Derived} {}
+
+------------------------------------------------
+  class Base {
+    int value;
+  public:
+    Base(): value{0} {
+      cout << "Base no-args constructor" << endl;
+    }
+    Base(int x): value{x} {
+      cout << "int Base constructor" << endl;
+    }
+  };
+
+------------------------------------------------
+  class Derived: public Base {
+    int doubled_value;
+  public:
+    Derived(): Base{}, doubled_value{0} {
+      cout << "Derived no-args constructor" << endl;
+    }
+    Derived(int x): Base{x}, doubled_value {x*2} {
+      cout << "int Derived constructor" << endl;
+    }
+  };
+
+------------------------------------------------
+
+                      Output
+Base base;            Base no-args constructor
+
+Base base{100};       int Base constructor
+
+Derived derived;      int Base constructor
+
+Derived derived{100}; int Base constructor
+                      int Derived constructor

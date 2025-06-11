@@ -1,0 +1,35 @@
+The final specifier
+
+  -C++11 provides the final specifier
+    -When used at the class level
+    -Prevents a class from being derived from
+
+    -When used at the method level
+    -Prevents virtual method from being overriden in derived classes
+
+-----------------------------------
+Syntax
+
+  class My_class final {
+    ...
+  };
+
+  class Derived final: public Base {
+    ...
+  };
+
+-----------------------------------
+final method
+
+  class A {
+  public:
+    virtual void do_something();
+  };
+
+  class B: public A {
+    virtual void do_something() final; //prevent further overriding
+  };
+
+  class C: public A {
+    virtual void do_something(); //Compiler ERROR -  Can't override
+  };
